@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Digit Generator</title>
+    <style>
+        body
+        {
+            background-color: #e0f7fa;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        .box
+        {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #00796b;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            width:30%;
+            margin-top:120px;
+            height: 300px;
+            align-content: center;
+        }
+        h1
+        {
+            color: #00796b;
+            margin-top: 50px;
+        }
+        .inp
+        {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .inp label
+        {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #333;
+            flex: 1;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #00796b;
+        }
+        .inp input
+        {
+            flex: 2;
+            width: 70%;
+            padding: 10px;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .inp input:focus
+        {
+            border-color: #004d40;
+            outline: none;
+        }
+        button
+        {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 70%;
+            margin-top: 20px;
+        }
+        button:hover
+        {
+            background-color: #004d40;
+        }
+        .result
+        {
+            margin-top: 20px;
+        }
+        .result input
+        {
+            background-color: #f1f8e9;
+            color: #333;
+            font-weight: bold;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            padding: 10px;
+            width: 70%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Random Digit Generator</h1>
+        <div class="box">
+            <form id="randomForm">
+                <div class="inp">
+                    <label for="fnum">First Number</label>
+                    <input type="number" placeholder="Enter First Number" name="fnum" id="fnum" step="any" required>
+                </div>
+                <div class="inp">
+                    <label for="snum">Second Number</label>
+                    <input type="number" placeholder="Enter Second Number" name="snum" id="snum" step="any" required>
+                </div>
+                <button type="submit">Generate</button>
+                <div class="result">
+                    <label for="res" style="color: #00796b;">Random Number</label>
+                    <input type="text" name="res" id="res" readonly>
+                </div>
+            </form>
+        </div>
+    </center>
+    <script>
+        document.getElementById('randomForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fnum = parseFloat(document.getElementById('fnum').value);
+            const snum = parseFloat(document.getElementById('snum').value);
+            const min = Math.min(fnum, snum);
+            const max = Math.max(fnum, snum);
+            const randomNum = (Math.random() * (max - min)) + min;
+            document.getElementById('res').value = randomNum.toFixed(2);
+        });
+    </script>
+</body>
+</html>
